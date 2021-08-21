@@ -1,0 +1,50 @@
+// Place all the styles related to the tweets controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body{
+font-family: 'Ubuntu', sans-serif;
+background-color: black;
+color: white;}
+
+
+.img {
+    width: 3rem;
+
+}
+
+.img_title {
+    width: 20rem;
+
+
+}
+
+.minutes{
+
+    color:aqua;
+
+
+
+}
+
+.background-textarea{
+    background-color: black;
+    color: black;
+
+}
+
+.card{
+    background-color: black;
+    border-color: rgb(94, 94, 93);
+    border-radius: 2rem;
+}
+hr{
+    border-color: #007bff;
+}
+
+.logotwitter{
+
+margin-left: 30rem;
+
+}
+

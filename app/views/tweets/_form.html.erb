@@ -1,0 +1,28 @@
+<%= form_with(model: tweet, local: true) do |form| %>
+  <% if tweet.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(tweet.errors.count, "error") %> prohibited this tweet from being saved:</h2>
+
+      <ul>
+      <% @tweet.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+   <% if current_user.url_photo %>
+    <div class = "container img_title">
+      <%= image_tag current_user.url_photo,:class =>"img-fluid  rounded-circle  border border-primary p-2 " %>
+    </div>
+ <% end %>
+    <%= form.text_area :content, class:"form-control border mt-4 rounded-pill border-primary background-textarea ",placeholder:" ¿Que estas pensando @#{current_user.username}?", autofocus: true %>
+  </div>
+
+  <div class="actions my-2">
+    <%= form.submit "Twittear", :class => "btn btn-primary text-black rounded-pill mb-3 mt-3 " %>
+  </div>
+
+<% end %>
+

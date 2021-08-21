@@ -1,0 +1,7 @@
+<h1>Tweets</h1>
+<% if user_signed_in? %>
+    <div class = "p-3">
+        <%= render 'tweets/form', tweet: @tweet %>
+    </div>
+<%end %>
+
