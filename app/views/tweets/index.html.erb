@@ -1,62 +1,85 @@
 <p id="notice"><%= notice %></p>
 
+
+
+<!-- icono principal -->
 <div class="container">
-   <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter logotwitter " width="60" height="60" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00abfb" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-twitter logotwitter " width="60" height="60" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00abfb" fill="none" stroke-linecap="round" stroke-linejoin="round">
   <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
   <path d="M22 4.01c-1 .49 -1.98 .689 -3 .99c-1.121 -1.265 -2.783 -1.335 -4.38 -.737s-2.643 2.06 -2.62 3.737v1c-3.245 .083 -6.135 -1.395 -8 -4c0 0 -4.182 7.433 4 11c-1.872 1.247 -3.739 2.088 -6 2c3.308 1.803 6.913 2.423 10.034 1.517c3.58 -1.04 6.522 -3.723 7.651 -7.742a13.84 13.84 0 0 0 .497 -3.753c-.002 -.249 1.51 -2.772 1.818 -4.013z" />
-</svg>
+  </svg>
 </div>
 
+<hr>
 <!-- render form tweet -->
 
-<hr>
 <% if user_signed_in? %>
     <div>
         <%= render 'tweets/form', tweet: @tweet %>
     </div>
 <%end %>
-<!-- codigo para mostrar tweets -->
+
+
+<!-- codigo para mostrar tarjetas con los contenidos del tweer-->
 <% @tweets.each do |tweet| %>
 
-<div class="card text-white bg-primary rounded-3 border border-info mb-3" style="max-width: 80rem;">
-  <% if tweet.user.url_photo %>
-    <%= image_tag tweet.user.url_photo,:class =>"img-fluid rounded-circle img ml-3 mt-3 border border-primary p-1" %>
-  <% end %>
+<!--  Card-->
+  <div class="card text-white bg-primary rounded-3 border border-info mb-3" style="max-width: 80rem;">
+  <!-- imagen el usuario del monento en las card-->
+    <% if tweet.user.url_photo %>
+      <%= image_tag tweet.user.url_photo,:class =>"img-fluid rounded-circle img ml-3 mt-3 border border-primary p-1" %>
+    <% end %>
+    <!-- tiempor del posteo-->
     <%= link_to distance_of_time_in_words(Time.now, tweet.created_at), tweet, class:" text-warning ml-auto mr-2"%>
-  <div class="card-header">@<%= tweet.user.username %> dice:</div>
-  <div class="card-body">
-    <h5 class="card-title"></h5>
-    <p class="card-text"><p class="card-text"><%= tweet.content %></p></p>
-    <% if user_signed_in? %>
-      <%= tweet.likes.count %>
-        <%if @user_likes.include?(tweet.id) %>
-          <%= link_to like_destroy_path(tweet.id), method: :delete do %> 
-              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="28" height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#a905b6" fill="1" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-          <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-          </svg>
-          <% end %>
-      <% else %>
-        <%= link_to tweet_likes_path(tweet), method: :post do %> 
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart-heart" width="28" height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#ff2825" fill="1" stroke-linecap="round" stroke-linejoin="round">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-              <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
-              <path d="M12 7l-2 4l4 3l-2 4v3" />
-            </svg>
-        <% end %>
-      <% end %>
-      <%=tweet.rt_count%>
-        <%= link_to quote_user_path(tweet.id),:class => 'nav-icon' do %>
-          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate-rectangle"width="28" height="28" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-          <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
-          <path d="M16.3 5h.7a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h5l-2.82 -2.82m0 5.64l2.82 -2.82" transform="rotate(-45 12 12)" />
-        </svg>
-        <% end %>
-      <% end %>
 
+    <!-- nombre del usuario en la card-->
+    <div class="card-header">@<%= tweet.user.username %> dice:</div>
+    <div class="card-body">
+      <h5 class="card-title"></h5>
+
+      <!-- contenido del post del usario en la card-->
+      <p class="card-text"><p class="card-text"><%= tweet.content %></p></p>
+      <!-- solo se motrara los siguiente si cliente esta regsitrado-->
+      <% if user_signed_in? %>
+      <!-- contador de likes-->
+        <%= tweet.likes.count %>
+        <!-- if para los like-->
+          <%if @user_likes.include?(tweet.id) %>
+          <!-- sino muestra los like no rotos-->
+            <%= link_to like_destroy_path(tweet.id), method: :delete do %> 
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart" width="28" height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#a905b6" fill="1" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                </svg>
+            <% end %>
+
+          <% else %>
+        <!-- sino muestra los like rotos-->
+            <%= link_to tweet_likes_path(tweet), method: :post do %> 
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-heart-heart" width="28" height="28" viewBox="0 0 24 24" stroke-width="2" stroke="#ff2825" fill="1" stroke-linecap="round" stroke-linejoin="round">
+                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572" />
+                <path d="M12 7l-2 4l4 3l-2 4v3" />
+              </svg>
+            <% end %>
+
+          <% end %>
+
+        <!-- contador de tweets-->
+        <%=tweet.rt_count%>
+          <!-- bonton de rtweet-->
+          <%= link_to quote_user_path(tweet.id),:class => 'nav-icon' do %>
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-rotate-rectangle"width="28" height="28" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+              <path d="M16.3 5h.7a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-10a2 2 0 0 1 -2 -2v-10a2 2 0 0 1 2 -2h5l-2.82 -2.82m0 5.64l2.82 -2.82" transform="rotate(-45 12 12)" />
+              </svg>
+          <% end %>
+
+      <% end %><!-- en user_sing_in-->
+    </div>
   </div>
-</div>
-<% end %>
+
+<% end %><!-- fin echa-->
 
 
     <% paginate @tweets %>

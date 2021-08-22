@@ -3,10 +3,13 @@ class Tweet < ApplicationRecord
   has_many :likes
   has_many :tweets
 
+
+
   def rt_count
 
-    Tweet.where(retweet_rf: self.id).count
+    Tweet.where(tweet_id: self.id).count
     
   end
+
 
 end
