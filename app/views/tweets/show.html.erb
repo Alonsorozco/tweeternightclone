@@ -1,19 +1,27 @@
 <p id="notice"><%= notice %></p>
+<%= link_to 'Back', tweets_path,class:"text-danger" %>
 
-<p>
-  <strong>Content:</strong>
-  <%= @tweet.content %>
-</p>
 
-<p>
-  <strong>User:</strong>
-  <%= @tweet.user.username %>
-</p>
-<p>
-  <strong>User:</strong>
-  <%= image_tag @tweet.user.url_photo, class:"img" %>
-  
-</p>
 
-<%= link_to 'Edit', edit_tweet_path(@tweet) %> |
+<div class = "container text-center">
+
+    <%@tweet_likes.each do |p1|%>
+<div class="row">
+    <div class="card pt-4" style="width: 18rem;">
+  <%=image_tag p1.user.url_photo %>
+  <div class="card-body">
+    <h5 class="card-title">@<%= p1.user.username%> le gusta tu tweet</h5>
+    <p class="card-text"></p>
+    <%= link_to 'Back', tweets_path %>
+  </div>
+</div>
+</div>
+
+
+  <%end%>
+
+
+</div>
+
+<%= link_to 'Edit', edit_tweet_path(@tweet) %> 
 <%= link_to 'Back', tweets_path %>
