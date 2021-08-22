@@ -18,7 +18,7 @@ class TweetsController < ApplicationController
 
     @quote.content = @tweet.content
     @quote.user_id = current_user.id
-    @quote.retweet_rf = @tweet.id
+    @quote.tweet_id = @tweet.id
     @quote.created_at = DateTime.now
     @quote.updated_at = DateTime.now
     respond_to do |format|

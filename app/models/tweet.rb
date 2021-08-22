@@ -5,11 +5,20 @@ class Tweet < ApplicationRecord
 
 
 
-  def rt_count
 
-    Tweet.where(tweet_id: self.id).count
-    
+#metodo para buscar las imagenes 
+  def father_avatar
+
+    Tweet.find(self.tweet_id).user.url_photo
+
   end
 
+  #metodo para buscar los nombre de las personas del tweet que retwittea
+  def father_name
+    
+    Tweet.find(self.tweet_id).user.username
+    
+  end
+  
 
 end
