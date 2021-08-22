@@ -38,6 +38,13 @@ color: white;}
     border-color: rgb(94, 94, 93);
     border-radius: 2rem;
 }
+
+.img:hover {
+    background-color: rgb(143, 143, 137);
+  }
+
+
+
 hr{
     border-color: #007bff;
 }
@@ -48,3 +55,16 @@ margin-left: 30rem;
 
 }
 
+.form-group{
+
+    width: 15rem;
+    border-radius: 4rem;
+    margin-left: 26rem;
+
+}
+
+.form-control{
+
+    background-color: black;
+    
+}

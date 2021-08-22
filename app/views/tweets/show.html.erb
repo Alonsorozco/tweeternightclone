@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Back', tweets_path,class:"text-danger" %>
+<%= link_to 'Inicio', tweets_path,:class => "btn btn-primary text-black rounded-pill mb-3 mt-3 " %>
 
 
 
@@ -8,7 +8,7 @@
   <div class = "container text-center">
 <div class="row">
 <div class>
-    <div class="row  card pt-4 mb-3  " style="width: 18rem;">
+    <div class="col-sm card pt-4 mb-3 " style="width: 18rem;">
   <%=image_tag p1.user.url_photo %>
   <div class="card-body">
     <h5 class="card-title">@<%= p1.user.username%> le gusta este tweet¡¡</h5>
