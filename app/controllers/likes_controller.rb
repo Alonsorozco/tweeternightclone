@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+  before_action :authenticate_user! #solo usuario authentificado pueden dar Like
 
 
   def show
