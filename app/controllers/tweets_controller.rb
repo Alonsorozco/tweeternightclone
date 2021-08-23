@@ -1,6 +1,7 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: %i[ show edit update destroy quote ]
 
+
   # GET /tweets or /tweets.json
   def index
     @user_likes = Like.where(user: current_user).pluck(:tweet_id)
@@ -49,7 +50,7 @@ class TweetsController < ApplicationController
     @tweet.user_id = current_user.id #se guarda el usuario y el tweet
     respond_to do |format|#redirrecciona al root
       if @tweet.save
-        format.html { redirect_to root_path, notice: "Tweet was successfully created." }
+        format.html { redirect_to root_path, notice: "Felicitaciones has twitteado" }
         format.json { render :show, status: :created, location: @tweet }
       else
         format.html { render :new, status: :unprocessable_entity }

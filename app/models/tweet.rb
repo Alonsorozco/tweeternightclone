@@ -3,7 +3,7 @@ class Tweet < ApplicationRecord
   has_many :likes
   has_many :tweets
   paginates_per 50
-
+  validates :content, presence: true
 
 
 #metodo para buscar las imagenes 
