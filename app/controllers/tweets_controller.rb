@@ -47,7 +47,7 @@ class TweetsController < ApplicationController
   def create
     @tweet = Tweet.new(tweet_params)
     @tweet.user_id = current_user.id #se guarda el usuario y el tweet
-    respond_to do |format|
+    respond_to do |format|#redirrecciona al root
       if @tweet.save
         format.html { redirect_to root_path, notice: "Tweet was successfully created." }
         format.json { render :show, status: :created, location: @tweet }
@@ -86,11 +86,6 @@ class TweetsController < ApplicationController
     def set_tweet
       @tweet = Tweet.find(params[:id])
     end
-
-    def likeLike
-      @like = Like.all
-    end
-    
     
 
     # Only allow a list of trusted parameters through.
