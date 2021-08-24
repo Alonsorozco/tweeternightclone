@@ -13,7 +13,7 @@ class Tweet < ApplicationRecord
 
   end
 
-  #metodo para buscar los nombre de las personas del tweet que retwittea
+  #metodo para buscar los nombre de las personas que retwittea
   def father_name
     
     Tweet.find(self.tweet_id).user.username

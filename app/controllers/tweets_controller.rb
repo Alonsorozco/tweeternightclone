@@ -1,5 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: %i[ show edit update destroy quote ]
+  before_action :authenticate_user!,only: %i[ quote ] #solo usuario authentificado pueden dar rteetear
 
 
   # GET /tweets or /tweets.json

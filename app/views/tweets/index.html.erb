@@ -42,7 +42,7 @@
         <!-- contenido del post del usario en la card-->
         <p class="card-text"><p class="card-text"><%= tweet.content %></p></p>
         <!-- solo se motrara los siguiente si cliente esta regsitrado-->
-        <% if user_signed_in? %>
+        
         <!-- contador de likes-->
           <%= tweet.likes.count %>
           <!-- if para los like-->
@@ -77,7 +77,7 @@
                 </svg>
             <% end %>
 
-        <% end %><!-- en user_sing_in-->
+  
       </div>
       </div>
 
