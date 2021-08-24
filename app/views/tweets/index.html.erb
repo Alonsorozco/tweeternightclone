@@ -99,7 +99,7 @@
         <!-- contenido del post del usario en la card-->
         <p class="card-text"><p class="card-text"> <%= image_tag tweet.father_avatar, class:"img-fluid rounded-circle img ml-3 mt-3 border border-primary p-1" %><%=tweet.father_name %> dice:<%= tweet.content %></p></p>
         <!-- solo se motrara los siguiente si cliente esta regsitrado-->
-        <% if user_signed_in? %>
+  
         <!-- contador de likes-->
           <%= tweet.likes.count %>
           <!-- if para los like-->
@@ -134,7 +134,7 @@
                 </svg>
             <% end %>
 
-        <% end %><!-- en user_sing_in-->
+    
       </div>
       </div>
 

@@ -7,8 +7,8 @@ class TweetsController < ApplicationController
   def index
     @user_likes = Like.where(user: current_user).pluck(:tweet_id)
     @tweet = Tweet.new
-    @tweets = Tweet.order(created_at: :desc).page params[:page]
-   
+    @tweets = Tweet.eager_load(:likes).order(created_at: :desc).page params[:page]
+  
   end
 
   # GET /tweets/1 or /tweets/1.json
