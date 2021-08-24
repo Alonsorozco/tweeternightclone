@@ -20,12 +20,12 @@ class TweetsController < ApplicationController
   def quote
     @quote = Tweet.new
 
-    @quote.content = @tweet.content
-    @quote.user_id = current_user.id
-    @quote.tweet_id = @tweet.id
-    @quote.created_at = DateTime.now
-    @quote.updated_at = DateTime.now
-    respond_to do |format|
+    @quote.content = @tweet.content # se cargar el  content tweet a quote
+    @quote.user_id = current_user.id # se cargar el curren user a la columna user id del quote
+    @quote.tweet_id = @tweet.id # se cargar el tweet.id a quote
+    @quote.created_at = DateTime.now #se cargar la fecha creacion a quote
+    @quote.updated_at = DateTime.now #se cargar la fecha de actualizacion a quote
+    respond_to do |format| #se direcciona al root
       if @quote.save
         format.html { redirect_to root_path, notice: "Comment was successfully created." }
         format.json { render :show, status: :created, location: @tweet }
