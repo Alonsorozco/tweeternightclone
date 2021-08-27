@@ -5,10 +5,14 @@ class TweetsController < ApplicationController
 
   # GET /tweets or /tweets.json
   def index
-    @user_likes = Like.where(user: current_user).pluck(:tweet_id)
-    @tweet = Tweet.new
-    @tweets = Tweet.eager_load(:likes).order(created_at: :desc).page params[:page]
-  
+    # Buqueda parcial
+    if params[:q]
+      @tweets = Tweet.where('content LIKE ?', "%#{params[:q]}%").order(created_at: :desc).page params[:page]
+    else
+      @tweets= Tweet.eager_load(:user, :likes).order(created_at: :desc).page params[:page]
+    end
+      @tweet = Tweet.new
+      @user_likes = Like.where(user: current_user).pluck(:tweet_id)
   end
 
   # GET /tweets/1 or /tweets/1.json
