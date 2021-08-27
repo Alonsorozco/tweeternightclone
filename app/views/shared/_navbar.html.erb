@@ -10,11 +10,11 @@
         <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse " id="navbarNav">
 <!-- barra de busqueda y boton-->
-        <%= form_with(url:root_path, method: :get, local: :true, class: 'form-inline my-2 my-lg-0') do %>
-        <%= text_field_tag :q, "", class: 'form-control mr-sm-2' %>
-        <%= submit_tag( "Buscar", Class: 'btn btn-outline-success my-2 my-sm-0' )%>
+        <%= form_with(url:root_path, method: :get, local: :true, class: 'form-inline my-2 my-lg-0 pb-2') do %>
+        <%= text_field_tag :q, "", class: 'form-control mr-sm-1' %>
+        <%= submit_tag( "Buscar", Class: 'btn btn-outline-success my-1 my-sm-0' )%>
         <%end%>
 
             <ul class="navbar-nav ml-auto">

@@ -1,5 +1,11 @@
 <p id="notice" class="text-center mr-5 text-muted font-weight-bold"><%= notice %></p>
 
+<% if user_signed_in? %>
+    <div>
+        <%= render 'users_to_follow' %>
+    </div>
+<%end %>
+
 
 
 <!-- icono principal -->
@@ -40,7 +46,7 @@
         <h5 class="card-title"></h5>
 
         <!-- contenido del post del usario en la card-->
-        <p class="card-text"><p class="card-text"><%= tweet.content %></p></p>
+        <p class="card-text"><p class="card-text"><%= hashtag(tweet.content) %></p></p>
         <!-- solo se motrara los siguiente si cliente esta regsitrado-->
         
         <!-- contador de likes-->
@@ -97,7 +103,7 @@
         <h5 class="card-title"></h5>
 
         <!-- contenido del post del usario en la card-->
-        <p class="card-text"><p class="card-text"> <%= image_tag tweet.father_avatar, class:"img-fluid rounded-circle img ml-3 mt-3 border border-primary p-1" %><%=tweet.father_name %> dice:<%= tweet.content %></p></p>
+        <p class="card-text"><p class="card-text"> <%= image_tag tweet.father_avatar, class:"img-fluid rounded-circle img ml-3 mt-3 border border-primary p-1" %><%=tweet.father_name %> dice:<%= hashtag(tweet.content) %></p></p>
         <!-- solo se motrara los siguiente si cliente esta regsitrado-->
   
         <!-- contador de likes-->
