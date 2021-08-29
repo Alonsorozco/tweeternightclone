@@ -60,7 +60,7 @@ class TweetsController < ApplicationController
         format.html { redirect_to root_path, notice: "Felicitaciones has twitteado" }
         format.json { render :show, status: :created, location: @tweet }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html {  redirect_to root_path, notice: "Favor ingresa un Tweet"}
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
     end

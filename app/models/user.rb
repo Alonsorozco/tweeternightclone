@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :followers, class_name: 'Follow', foreign_key: :followed_id, dependent: :destroy
  
   def can_follow? #puedes seguir
-    should_follow = self.followeds.pluck(:follower_id) #seguidores que deberias seguir
+    should_follow = self.followeds.pluck(:followed_id) #seguidores que deberias seguir
     !should_follow.include?(self.id)
   end
   

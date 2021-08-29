@@ -15,8 +15,7 @@ class ApplicationController < ActionController::Base
         
 
         def configure_permited_parameters
-                devise_parameter_sanitizer.permit(:sing_up, keys:[:name, :photo])
-
+                devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :url_photo])
         end
         #se permiten lo parametro para ocuparlo en devise 
 end

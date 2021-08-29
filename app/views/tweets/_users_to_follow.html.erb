@@ -2,7 +2,7 @@
 <% @users.each do |user| %>
 <% if user.can_follow?  %>
   <%= link_to follow_path(user.id), method: :post do %>
-    <%= image_tag user.url_photo %>
+    <%=image_tag user.url_photo %>
     <% end %>
   <% end %>
 <% end %>
