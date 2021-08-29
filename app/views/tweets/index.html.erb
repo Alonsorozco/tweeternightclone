@@ -1,7 +1,7 @@
 <p id="notice" class="text-center mr-5 text-muted font-weight-bold"><%= notice %></p>
 
 <% if user_signed_in? %>
-    <div>
+    <div class= "container">
         <%= render 'users_to_follow' %>
     </div>
 <%end %>
@@ -24,6 +24,7 @@
         <%= render 'tweets/form', tweet: @tweet %>
     </div>
 <%end %>
+
 
 
 <!-- codigo para mostrar tarjetas con los contenidos del tweer-->

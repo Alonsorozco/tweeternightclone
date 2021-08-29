@@ -3,6 +3,8 @@ class Tweet < ApplicationRecord
   has_many :likes
   has_many :tweets
   paginates_per 50
+  scope :tweets_for_me, -> (user) { where(:user_id => user.followeds.ids)}
+  # Ex:- scope :active, -> {where(:active => true)}
   validates :content, presence: true
 
 

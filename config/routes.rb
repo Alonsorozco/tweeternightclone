@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users #ruta devise
   delete 'like/:id', to: 'likes#destroy', as:'like_destroy'#ruta para destruir los like
-
+  post'follows/:id', to: 'follows#to_follow', as: 'follow'
   resources :tweets do#ruta anidada para tweets y likes
     resources :likes
   end
