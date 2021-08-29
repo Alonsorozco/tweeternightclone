@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
+  devise_for :admin_users, ActiveAdmin::Devise.config
+  ActiveAdmin.routes(self)
   devise_for :users #ruta devise
   delete 'like/:id', to: 'likes#destroy', as:'like_destroy'#ruta para destruir los like
-  post'follows/:id', to: 'follows#to_follow', as: 'follow'
+  
   resources :tweets do#ruta anidada para tweets y likes
     resources :likes
   end
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
     resources :tweet
   end
 
+  post 'follows/:id', to: 'follows#to_follow', as: 'follow'
   
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

@@ -1,8 +1,8 @@
-<div class="images-basic img-fluid">
+<div class="images-basic">
 <% @users.each do |user| %>
 <% if user.can_follow?  %>
   <%= link_to follow_path(user.id), method: :post do %>
-    <%= image_tag user.url_photo, class:"img" %>
+    <%= image_tag user.url_photo %>
     <% end %>
   <% end %>
 <% end %>

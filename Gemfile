@@ -31,7 +31,8 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 gem'devise'
 gem 'kaminari'
-gem 'faker'
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+gem 'activeadmin'
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
 
