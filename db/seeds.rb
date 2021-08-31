@@ -35,4 +35,4 @@ User.create([{
                user_id: Random.rand(1..4)
         )
        end
-AdminUser.create!(email: 'admin@example.com', password: '123456', password_confirmation: '123456') if Rails.env.development?
+#AdminUser.create!(email: 'admin@example.com', password: '123456', password_confirmation: '123456') if Rails.env.development?
