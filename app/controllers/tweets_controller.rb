@@ -7,15 +7,17 @@ class TweetsController < ApplicationController
   def index
     # Buqueda parcial
     if params[:q]
-      @tweets = Tweet.where('content LIKE ?', "%#{params[:q]}%").order(created_at: :desc).page params[:page]
+      @tweets = Tweet.where('content LIKE ?', "%#{params[:q]}%").order(created_at: :desc).page params[:page] #este codigo  se para la busqueda parcial
     elsif user_signed_in?
-      @tweets = Tweet.tweets_for_me(current_user).order(created_at: :desc).page params[:page]
+      
+      @tweets= Tweet.tweets_for_me(current_user).order(created_at: :desc).page params[:page]#
+      
     else
       @tweets= Tweet.eager_load(:user, :likes).order(created_at: :desc).page params[:page]
     end
     @tweet = Tweet.new
     @user_likes = Like.where(user: current_user).pluck(:tweet_id)
-    @users = User.where('id IS NOT ?', current_user) if user_signed_in?
+    @users = User.where('id IS NOT ?', current_user.id).last(5) if user_signed_in?
   end
   # GET /tweets/1 or /tweets/1.json
   def show

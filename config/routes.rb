@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   post 'follows/:id', to: 'follows#to_follow', as: 'follow'
-  
+  delete 'follows/:id', to: 'follows#to_unfollow', as: 'unfollow'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root'tweets#index' #root
