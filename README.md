@@ -63,4 +63,4 @@ heroku run rails db:migrate
 
 ## Autor ✒️
 
-_Fabian Salas Orozo
+Fabian Salas Orozo
