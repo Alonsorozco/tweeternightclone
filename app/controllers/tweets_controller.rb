@@ -10,7 +10,7 @@ class TweetsController < ApplicationController
       @tweets = Tweet.where('content LIKE ?', "%#{params[:q]}%").order(created_at: :desc).page params[:page] #este codigo  se para la busqueda parcial
     elsif user_signed_in?
       
-      @tweets= Tweet.tweets_for_me(current_user).order(created_at: :desc).page params[:page]#
+      @tweets= Tweet.tweets_for_me(current_user).order(created_at: :desc).page params[:page]
       
     else
       @tweets= Tweet.eager_load(:user, :likes).order(created_at: :desc).page params[:page]
