@@ -18,7 +18,7 @@ class TweetsController < ApplicationController
     @tweet = Tweet.new
     @user_likes = Like.where(user: current_user).pluck(:tweet_id)
     @users  = User.all
-    #@users = User.where('id IS NOT ?', current_user.id).last(5) if user_signed_in?
+    #@users = User.where('id IS NOT ?', current_user.id).last(5) if user_signed_in? #problemas de en heroku
   end
   # GET /tweets/1 or /tweets/1.json
   def show
