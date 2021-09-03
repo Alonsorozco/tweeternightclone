@@ -4,7 +4,7 @@ class Tweet < ApplicationRecord
   has_many :tweets
   paginates_per 50
   #scope :tweets_for_me, -> (user) { where(user_id:  user.followeds.ids)}
-  scope :tweets_for_me, -> (user) { where(:user_id => user.followeds.ids )} #scope para que muetrrea mis tweets y los de mi amigos
+  scope :tweets_for_me, -> (user) { where(:user_id => user.followeds.pluck(:followed_id)) } #scope para que muetrrea mis tweets y los de mi amigos
 
   # Ex:- scope :active, -> {where(:active => true)}
   validates :content, presence: true

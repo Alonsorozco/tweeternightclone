@@ -8,11 +8,11 @@ class FollowsController < ApplicationController
         redirect_to root_path
     end
 
-    def to_unfollow
-         @followed = User.find(params[:id])
-         current_user.followeds.find_by(followed_id: @followed.id).destroy
-         redirect_to root_path
-    end
+    # def to_unfollow
+    #      @followed = User.find(params[:id])
+    #      current_user.followeds.find_by(followed_id: @followed.id).destroy
+    #      redirect_to root_path
+    # end
 
 
 end

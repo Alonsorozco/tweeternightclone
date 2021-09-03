@@ -10,15 +10,15 @@ class TweetsController < ApplicationController
       @tweets = Tweet.where('content LIKE ?', "%#{params[:q]}%").order(created_at: :desc).page params[:page] #este codigo  se para la busqueda parcial
     elsif user_signed_in?
       
-      @tweets= Tweet.tweets_for_me(current_user).order(created_at: :desc).page params[:page]
+      @tweets= Tweet.tweets_for_me(current_user).or(current_user.tweet).order(created_at: :desc).page params[:page]
       
     else
       @tweets= Tweet.eager_load(:user, :likes).order(created_at: :desc).page params[:page]
     end
     @tweet = Tweet.new
     @user_likes = Like.where(user: current_user).pluck(:tweet_id)
-    @users  = User.all
-    #@users = User.where('id IS NOT ?', current_user.id).last(5) if user_signed_in? #problemas de en heroku
+    #@users  = User.all cambiar para subir a heroku
+
   end
   # GET /tweets/1 or /tweets/1.json
   def show

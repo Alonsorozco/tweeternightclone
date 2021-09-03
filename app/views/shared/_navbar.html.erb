@@ -17,7 +17,7 @@
                 <!-- barra de busqueda y boton-->
         <%= form_with(url:root_path, method: :get, local: :true, class: 'form-inline') do %>
         <%= text_field_tag :q, "", class: 'form-control mr-sm-1' %>
-        <%= submit_tag( "Buscar", Class: 'btn btn-outline-success my-1 my-sm-0' )%>
+        <%= submit_tag( "Buscar", Class: 'btn btn-outline-success my-1 my-sm-0 ' )%>
         <%end%>
                 <li>
                     <%= link_to 'Salir',destroy_user_session_path, method: :delete, class:"nav-link" %>
