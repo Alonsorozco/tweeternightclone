@@ -26,7 +26,7 @@ class Tweet < ApplicationRecord
   
     def count_tweet
       
-    
+      Tweet.where(tweet_id: self.id).count
       
     end
     
