@@ -5,6 +5,7 @@
 * Twiternightone 1.0 Clone Tweeter
 
 ## Comenzando 🚀
+* basic_authenticate_with name: "fabi", password: "123123", except: :index
 * activadmin: email: 'admin@example.com', password: '123456'
 * Link de proyecto en heroku https://tweeternighone.herokuapp.com/
 * Link de proyecto en github https://github.com/Alonsorozco/tweeternightclone
