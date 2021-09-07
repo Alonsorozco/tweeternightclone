@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
       get 'news', to: 'tweets#news'
-      get 'date_filter/:date1/:date2', to: 'tweets#date_filter'
+      get ':date1/:date2', to: 'tweets#date_filter'
       post 'create', to: 'tweets#create'
     end
   end
